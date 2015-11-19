@@ -66,6 +66,10 @@ IB_DESIGNABLE
  */
 - (void)show;
 /**
+ *  Presents the snackbar to the user for the configured duration of time in the specified view.
+ */
+- (void)showInView:(UIView *)view;
+/**
  *  Removes the snackbar from the screen. Calls the snackbar's dismissal block if one exists, unless the snackbar has its isLongRunning property set to YES and it action button has already been pressed by the user. This message is shorthand for calling dismissAnimated with YES as the argument.
  */
 - (void)dismiss;

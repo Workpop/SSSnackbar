@@ -108,6 +108,20 @@ static SSSnackbar *currentlyVisibleSnackbar = nil;
     
     UIView *superview = topController.view;
     
+    [self _showInView:superview];
+}
+
+- (void)showInView:(UIView *)view
+{
+    if (view.superview) {
+        [self _showInView:view.superview];
+    } else {
+        [self _showInView:view];
+    }
+}
+
+- (void)_showInView:(UIView *)view
+{
     BOOL shouldReplaceExistingSnackbar = currentlyVisibleSnackbar != nil;
     
     if (shouldReplaceExistingSnackbar) {
@@ -115,21 +129,21 @@ static SSSnackbar *currentlyVisibleSnackbar = nil;
         [currentlyVisibleSnackbar dismissAnimated:NO];
     }
     
-    [superview addSubview:self];
-    [superview addConstraints:self.horizontalLayoutConstraints];
-    [superview addConstraints:shouldReplaceExistingSnackbar ? self.visibleVerticalLayoutConstraints : self.hiddenVerticalLayoutConstraints];
-    [superview layoutIfNeeded];
+    [view addSubview:self];
+    [view addConstraints:self.horizontalLayoutConstraints];
+    [view addConstraints:shouldReplaceExistingSnackbar ? self.visibleVerticalLayoutConstraints : self.hiddenVerticalLayoutConstraints];
+    [view layoutIfNeeded];
     [self setupContentLayout];
     
     if (!shouldReplaceExistingSnackbar) {
-        [superview removeConstraints:self.hiddenVerticalLayoutConstraints];
-        [superview addConstraints:self.visibleVerticalLayoutConstraints];
+        [view removeConstraints:self.hiddenVerticalLayoutConstraints];
+        [view addConstraints:self.visibleVerticalLayoutConstraints];
         
         [UIView animateWithDuration:0.2
                               delay:0
                             options:UIViewAnimationOptionCurveEaseOut
                          animations:^{
-                             [superview layoutIfNeeded];
+                             [view layoutIfNeeded];
                          }
                          completion:nil];
     }
