@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "SSSnackbar"
-  s.version          = "0.1.2"
+  s.version          = "0.1.3"
   s.summary          = "An iOS implementation of the Material Design Snackbar component; a stylish actionable alert."
   s.description      = <<-DESC
                         Snackbars are a Android UI component which present a stylish, actionable alert to the user. Google also uses their own iOS snackbar implementation in some of their iOS apps, such as Gmail.
@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.screenshots     = "http://i.imgur.com/Z5QWAJW.jpg", "http://i.imgur.com/bud0MB4.jpg"
   s.license          = 'MIT'
   s.author           = { "Sam Stone" => "stonesam92@gmail.com" }
-  s.source           = { :git => "https://github.com/stonesam92/SSSnackbar.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/cerupcat/SSSnackbar.git", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/CmdShiftN'
 
   s.platform     = :ios, '7.0'
